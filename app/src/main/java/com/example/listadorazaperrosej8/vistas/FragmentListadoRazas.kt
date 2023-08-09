@@ -32,7 +32,9 @@ class FragmentListadoRazas : Fragment() {
     private fun initAdapter() {
         val adapter = AdapterRazas()
         binding.RVrazas.adapter = adapter
-        razasVM
+        razasVM.razaLiveData().observe(viewLifecycleOwner){
+            adapter.setData(it)
+        }
     }
 
 
