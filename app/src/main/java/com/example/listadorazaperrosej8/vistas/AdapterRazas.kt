@@ -2,8 +2,10 @@ package com.example.listadorazaperrosej8.vistas
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.listadorazaperrosej8.R
 import com.example.listadorazaperrosej8.data.local.RazaEntity
 import com.example.listadorazaperrosej8.databinding.ItemRazasBinding
 
@@ -37,6 +39,9 @@ class AdapterRazas: RecyclerView.Adapter <AdapterRazas.ItemRazasViewHolder>(){
     class ItemRazasViewHolder(val razasVista: ItemRazasBinding): RecyclerView.ViewHolder(razasVista.root) {
         fun bind(raza:RazaEntity){
             razasVista.txNombreRazas.text = raza.raza
+            razasVista.CVrazas.setOnClickListener {
+                Navigation.findNavController(razasVista.root).navigate(R.id.action_fragmentListadoRazas_to_fragmentDetalle)
+            }
         }
 
     }

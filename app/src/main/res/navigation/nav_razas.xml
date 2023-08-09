@@ -9,5 +9,14 @@
         android:id="@+id/fragmentListadoRazas"
         android:name="com.example.listadorazaperrosej8.vistas.FragmentListadoRazas"
         android:label="fragment_listado_razas"
-        tools:layout="@layout/fragment_listado_razas" />
+        tools:layout="@layout/fragment_listado_razas" >
+        <action
+            android:id="@+id/action_fragmentListadoRazas_to_fragmentDetalle"
+            app:destination="@id/fragmentDetalle" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetalle"
+        android:name="com.example.listadorazaperrosej8.vistas.FragmentDetalle"
+        android:label="fragment_detalle"
+        tools:layout="@layout/fragment_detalle" />
 </navigation>
