@@ -3,6 +3,7 @@ package com.example.listadorazaperrosej8.vistas
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.listadorazaperrosej8.data.local.RazaEntity
 import com.example.listadorazaperrosej8.databinding.ItemRazasBinding
 
