@@ -1,7 +1,9 @@
 package com.example.listadorazaperrosej8.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.listadorazaperrosej8.data.local.RazaDao
+import com.example.listadorazaperrosej8.data.local.RazaDetalle
 import com.example.listadorazaperrosej8.data.local.RazaEntity
 import com.example.listadorazaperrosej8.data.remote.RazaAPI
 
@@ -18,6 +20,24 @@ class Repositorio( private val razaAPI: RazaAPI, private val razaDao: RazaDao) {
                 val razaEntity = RazaEntity(it)
                 razaDao.insertRaza(razaEntity)
             }
+                }else{
+            Log.e("respositorio",response.errorBody().toString())
+                }
+        }
+
+    suspend fun getDetallePerro(id:String){
+        val response = razaAPI.getDetalleRaza(id)// llegan los datos
+        if (response.isSuccessful){
+            response.body()!!.message.forEach{
+                val razaDetalle = RazaDetalle(id,it)
+                razaDao.insertDetallePerro(razaDetalle)  //seria el raza detalle que ed un entiti
+            }
+
+
+            }else{
+                Log.e("respositorio",response.errorBody().toString())
         }
     }
 }
+
+

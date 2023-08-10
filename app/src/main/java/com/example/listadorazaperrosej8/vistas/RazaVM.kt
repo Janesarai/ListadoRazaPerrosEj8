@@ -24,4 +24,8 @@ class RazaVM ( application: Application): AndroidViewModel(application) {
     fun getTodasRazas() = viewModelScope.launch {
         repositorio.getRazas()
     }
+
+    fun getFetallePerroVM(id: String) = viewModelScope.launch {
+        repositorio.getDetallePerro(id)
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.listadorazaperrosej8.vistas
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
@@ -38,9 +39,11 @@ class AdapterRazas: RecyclerView.Adapter <AdapterRazas.ItemRazasViewHolder>(){
     }
     class ItemRazasViewHolder(val razasVista: ItemRazasBinding): RecyclerView.ViewHolder(razasVista.root) {
         fun bind(raza:RazaEntity){
+            val bundle= Bundle()
             razasVista.txNombreRazas.text = raza.raza
             razasVista.CVrazas.setOnClickListener {
-                Navigation.findNavController(razasVista.root).navigate(R.id.action_fragmentListadoRazas_to_fragmentDetalle)
+                bundle.putString("id",raza.raza)
+                Navigation.findNavController(razasVista.root).navigate(R.id.action_fragmentListadoRazas_to_fragmentDetalle,bundle)
             }
         }
 
