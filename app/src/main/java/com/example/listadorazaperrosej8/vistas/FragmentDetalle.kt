@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.listadorazaperrosej8.R
+import com.example.listadorazaperrosej8.databinding.FragmentDetalleBinding
 import com.example.listadorazaperrosej8.databinding.FragmentListadoRazasBinding
 
 
@@ -16,7 +17,7 @@ private const val ARG_PARAM1 = "id"
 
 class FragmentDetalle : Fragment() {
 
-    lateinit var binding: FragmentListadoRazasBinding
+    lateinit var binding: FragmentDetalleBinding
     private val razasVM: RazaVM by activityViewModels()
 
     private var param1: String? = null
@@ -34,7 +35,7 @@ class FragmentDetalle : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentListadoRazasBinding.inflate(layoutInflater,container,false)
+        binding = FragmentDetalleBinding.inflate(layoutInflater, container, false)
         initAdapter()
 
         razasVM.getDetallePerroVM(param1.toString())
@@ -44,8 +45,13 @@ class FragmentDetalle : Fragment() {
 
     private fun initAdapter() {
         val adapter = AdapterDetalle()
+        binding.RVdetalle.adapter = adapter
+        razasVM.detalleLiveData(param1.toString()).observe(viewLifecycleOwner){
+            adapter.setDataDetalle(it)
+
 
     }
-
+}
 
 }
+

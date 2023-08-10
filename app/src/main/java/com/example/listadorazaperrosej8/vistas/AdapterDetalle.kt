@@ -8,15 +8,16 @@ import com.example.listadorazaperrosej8.data.local.RazaDetalle
 import com.example.listadorazaperrosej8.databinding.FragmentDetalleBinding
 import com.example.listadorazaperrosej8.databinding.ItemDetalleBinding
 
-class AdapterDetalle: RecyclerView.Adapter<AdapterDetalle.ItemDetalleViewHolder>()
-{
-    lateinit var binding: FragmentDetalleBinding
-    private val listaDetalle = mutableListOf<RazaDetalle>()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemDetalleViewHolder {
-        binding = FragmentDetalleBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+class AdapterDetalle: RecyclerView.Adapter<AdapterDetalle.ItemDetalleViewHolder>() {
 
+    lateinit var binding: ItemDetalleBinding
+    private val listaDetalle = mutableListOf<RazaDetalle>()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterDetalle.ItemDetalleViewHolder{
+
+        binding = ItemDetalleBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ItemDetalleViewHolder(binding)
     }
+
 
     override fun getItemCount(): Int {
         return listaDetalle.size
