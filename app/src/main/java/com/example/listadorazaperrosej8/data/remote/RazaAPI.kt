@@ -8,6 +8,6 @@ interface RazaAPI {
     @GET("breeds/list/all")
     suspend fun getData():Response<Raza>
 
-    @GET("breeds/{id}/images")
+    @GET("breed/{id}/images")
     suspend fun getDetalleRaza(@Path("id") id:String): Response<PerrooDetalle>
 }

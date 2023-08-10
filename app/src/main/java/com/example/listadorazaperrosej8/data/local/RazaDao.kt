@@ -16,4 +16,7 @@ interface RazaDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDetallePerro(razaDetalle: RazaDetalle)
+
+    @Query("Select * from tabla_razasDetalle where razaDetalle like :id")
+    fun getRazaDetalle(id:String): LiveData<List<RazaDetalle>>
 }

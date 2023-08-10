@@ -35,9 +35,9 @@ class FragmentDetalle : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentListadoRazasBinding.inflate(layoutInflater,container,false)
-        initAdapter()
+        //initAdapter()
 
-        razasVM.getFetallePerroVM(param1.toString())
+        razasVM.getDetallePerroVM(param1.toString())
         return binding.root
     }
 
