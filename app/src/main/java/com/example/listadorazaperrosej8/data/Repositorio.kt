@@ -20,8 +20,9 @@ class Repositorio( private val razaAPI: RazaAPI, private val razaDao: RazaDao) {
                     response.body()!!.message //solo sacando la parte del mensaje, sin status
                 val keys = message.keys
 
-                keys.forEach {
-                    val razaEntity = RazaEntity(it) // aqui se tranforma directamente desde un onjeto remoto
+                keys.forEach {raza ->
+                    //val razaEntity = RazaEntity(raza) // aqui se tranforma directamente desde un objeto remoto
+                    val razaEntity = raza.toRazaEntity()
                     razaDao.insertRaza(razaEntity)
                 }
             }
