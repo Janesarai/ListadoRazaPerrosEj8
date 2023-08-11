@@ -21,7 +21,7 @@ class Repositorio( private val razaAPI: RazaAPI, private val razaDao: RazaDao) {
                 val keys = message.keys
 
                 keys.forEach {
-                    val razaEntity = RazaEntity(it)
+                    val razaEntity = RazaEntity(it) // aqui se tranforma directamente desde un onjeto remoto
                     razaDao.insertRaza(razaEntity)
                 }
             }
@@ -36,8 +36,11 @@ class Repositorio( private val razaAPI: RazaAPI, private val razaDao: RazaDao) {
         try{
         val response = razaAPI.getDetalleRaza(id)// llegan los datos
         if (response.isSuccessful) {
-            response.body()!!.message.forEach {
-                val razaDetalle = RazaDetalle(id, it)
+            response.body()!!.message.forEach {url ->
+                //val razaDetalle = RazaDetalle(id, it) //se esta trasformando un string a un raza detalle que es entiti
+                //aca mas abajo se esta usando la funcion de extencion para trasnformar el url string para un objeto entiti ue tendra el id y la url
+                // trasnforma de la respues remota a una entidad
+                val razaDetalle = url.toEntity(id)
                 razaDao.insertDetallePerro(razaDetalle)  //seria el raza detalle que ed un entiti
             }
         }
