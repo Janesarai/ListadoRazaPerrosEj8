@@ -1,5 +1,7 @@
-package com.example.listadorazaperrosej8.data
+package com.example.listadorazaperrosej8
 
+import com.example.listadorazaperrosej8.data.toEntity
+import com.example.listadorazaperrosej8.data.toRazaEntity
 import org.junit.Assert.*
 
 import org.junit.Test
@@ -8,6 +10,8 @@ class MapperTest {
 
     @Test
     fun toEntity() {
+        //mok es un objeto que sirve para revisar llamada a otros metodos que sirve para revisar...
+        //
         //Given, dado este valor
 
         val url = "http://example.com"
