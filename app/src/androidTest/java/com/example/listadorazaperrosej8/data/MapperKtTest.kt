@@ -55,8 +55,9 @@ class MapperKtTest {
 
         // Then A
         val it = breedsDao.getRazas().getOrAwaitValue()
-        assertThat(it).isNotNull()
-        assertThat(it).isEmpty()
+        assertEquals(it,null)//assertThat(it).isNotNull()  (son equivalentes)
+        assertEquals(it.size,0) //assertThat(it).isEmpty() (pero la segunda es mucho mas legible)
+
 
         // Then B
         breedsDao.getRazas().observeForever {
